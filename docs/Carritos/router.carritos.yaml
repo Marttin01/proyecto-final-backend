@@ -1,0 +1,76 @@
+info:
+  title: "API de Carritos"
+  description: "API para operaciones relacionadas con carritos de compra"
+tags:
+  - name: Carritos
+    description: Endpoints relacionados con carritos de compra y sus operaciones
+paths:
+  /carritos/{cid}/purchase:
+    post:
+      summary: Realizar una compra con un carrito específico
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Datos de la compra
+          required: true
+          schema:
+            type: object
+            # Define las propiedades del body aquí
+      responses:
+        201:
+          description: Compra realizada exitosamente
+        500:
+          description: Error interno del servidor
+
+  /carritos/addProduct:
+    put:
+      summary: Agregar un producto al carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: body
+          in: body
+          description: Datos del producto a agregar al carrito
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID del producto a agregar
+                example: abc123
+      responses:
+        201:
+          description: Producto agregado al carrito exitosamente
+        500:
+          description: Error interno del servidor
+
+  /carritos/deleteProduct:
+    delete:
+      summary: Eliminar un producto del carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: body
+          in: body
+          description: Datos del producto a eliminar del carrito
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID del producto a eliminar
+                example: abc123
+      responses:
+        201:
+          description: Producto eliminado del carrito exitosamente
+        500:
+          description: Error interno del servidor

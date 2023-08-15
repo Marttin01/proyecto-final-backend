@@ -40,8 +40,8 @@ export class DaoMongoose {
         return user
     }
 
-    async readMany() {
-        return await this.#model.find().lean()
+    async readMany(filter) {
+        return await this.#model.find(filter).lean()
     }
 
     //el primer criteria tiene que ser un filtro {id:usuario.id}
@@ -72,5 +72,9 @@ export class DaoMongoose {
         const borrado = await this.#model.deleteOne(criteria)
         if(!borrado) throw new Error('Not found')
         return toPojo(borrado)
+    }
+
+    async deleteManyConnection(){
+        return await this.#model.deleteMany()
     }
 }

@@ -1,0 +1,37 @@
+paths:
+  /productos/post:
+    post:
+      summary: Crear un nuevo producto
+      parameters:
+        - name: body
+          in: body
+          description: Datos del producto a crear
+          required: true
+          schema:
+            $ref: "#/components/schemas/Producto"
+      responses:
+        201:
+          description: Producto creado exitosamente
+        500:
+          description: Error interno del servidor
+
+  /productos/delete:
+    delete:
+      summary: Eliminar un producto
+      parameters:
+        - name: body
+          in: body
+          description: Datos del producto a eliminar
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Identificador del producto a eliminar
+                example: dc200a87-69e8-476d-a79f-f838c21f7ffb
+      responses:
+        201:
+          description: Producto eliminado exitosamente
+        500:
+          description: Error interno del servidor

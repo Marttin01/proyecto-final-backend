@@ -1,0 +1,51 @@
+# paths:
+#   /carritos/post:
+#     post:
+#       summary: Crear un nuevo ticket de compra
+#       responses:
+#         201:
+#           description: Ticket de compra creado exitosamente
+#         500:
+#           description: Error interno del servidor
+
+#   /carritos/put:
+#     put:
+#       summary: Agregar un producto al carrito
+#       parameters:
+#         - name: body
+#           in: body
+#           description: Datos del producto a agregar al carrito
+#           required: true
+#           schema:
+#             type: object
+#             properties:
+#               id:
+#                 type: string
+#                 description: ID del producto a agregar
+#                 example: abc123
+#       responses:
+#         201:
+#           description: Producto agregado al carrito exitosamente
+#         500:
+#           description: Error interno del servidor
+
+#   /carritos/delete:
+#     delete:
+#       summary: Eliminar un producto del carrito
+#       parameters:
+#         - name: body
+#           in: body
+#           description: Datos del producto a eliminar del carrito
+#           required: true
+#           schema:
+#             type: object
+#             properties:
+#               id:
+#                 type: string
+#                 description: ID del producto a eliminar
+#                 example: abc123
+#       responses:
+#         201:
+#           description: Producto eliminado del carrito exitosamente
+#         500:
+#           description: Error interno del servidor

@@ -24,8 +24,8 @@ export class GenericRepository {
         return this.#dao.readByCartId(id)
     }
 
-    readMany(){
-        return this.#dao.readMany()
+    readMany(filter){
+        return this.#dao.readMany(filter)
     }
 
     updateOne(criteria,newCriteria){
@@ -38,5 +38,9 @@ export class GenericRepository {
 
     deleteOne(criteria){
         return this.#dao.deleteOne(criteria)
+    }
+
+    deleteAllConnection(){
+        return this.#dao.deleteMany()
     }
 }

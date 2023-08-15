@@ -121,3 +121,83 @@ export async function handleRestablecer2 (req,res,next){
         next(error)
     }
 }
+
+export async function handleGet (req,res,next){
+    try {
+       const usuarios = await usuarioRepository.readMany()
+       
+       res.json({status:"correct",payload:usuarios})
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function handleDeleteAll (req,res,next){
+
+    //FILTRO EN MINUTOS-------------------------------
+    const tiempoActualString = new Date().toLocaleString()
+    const tiempoActual = new Date(tiempoActualString)
+    tiempoActual.setMinutes(tiempoActual.getMinutes() - 30)
+
+    const tiempoRestadoString = tiempoActual.toLocaleString()
+    const [mes, dia, año] = tiempoRestadoString.split('/')
+    const fechaFormateada = `${dia}/${mes}/${año}`
+    console.log(fechaFormateada)
+   
+    const filter = { last_connection: { $lte: fechaFormateada } }
+
+    //FILTRO EN MESES--------------------------------
+    const mesActualString = new Date().toLocaleString()
+    const mesActual = new Date(mesActualString)
+
+    const mesRestadoString = mesActual.toLocaleString()
+    const [mes1, dia1, año1] = mesRestadoString.split('/')
+    const fechaFormateada2 = `${dia1}/${mes1 - 1}/${año1}`
+    const [fecha] = fechaFormateada2.split(',')
+    const mesFormateado = `${fecha}`
+
+    const monthFilter = { last_connection: { $lt: mesFormateado }}
+
+    try {
+        
+        const usuarios = await  usuarioRepository.readMany(filter)
+    
+        const adminUser = usuarios.filter((u) => u.email.includes("admin.com"))
+        if(adminUser){
+          
+            adminUser.forEach((admin) => {
+                const indice = usuarios.indexOf(admin)
+                usuarios.splice(indice,1)
+            })
+        } 
+
+
+        const clienteNodemailer = createTransport({
+            host:'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: SERVER_EMAIL,
+                pass: SERVER_EMAIL_PASSWORD
+            }
+        })
+
+        const testEmail = SERVER_EMAIL
+
+        usuarios.forEach(async (usuario) => {
+           
+            const mailOptions = {
+                from:testEmail,
+                to: usuario.email,
+                subject: 'Eliminacion de cuenta',
+                text:`Su cuenta ( ${usuario.email} ) ha sido eliminada por inactividad. Gracias vuelva prontos :)`
+            }
+            
+            await clienteNodemailer.sendMail(mailOptions)
+            await usuarioRepository.deleteOne(usuario)
+        })
+        
+        res.sendStatus(201)
+    } catch (error) {
+        next(error)
+    }
+}

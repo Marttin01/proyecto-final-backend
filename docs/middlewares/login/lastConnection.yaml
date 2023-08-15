@@ -1,0 +1,18 @@
+info:
+  title: "Middleware de Última Conexión"
+  description: "Middleware que actualiza la última conexión del usuario al iniciar sesión"
+tags:
+  - name: Middlewares Principales
+    description: Funciones de middleware utilizadas en la aplicación
+paths:
+  /middlewares/loginLastConnection:
+    post:
+      summary: Middleware de Última Conexión
+      description: Este middleware actualiza la última conexión del usuario al iniciar sesión
+      tags:
+        - Middleware
+      responses:
+        200:
+          description: Última conexión actualizada exitosamente
+        500:
+          description: Error interno del servidor

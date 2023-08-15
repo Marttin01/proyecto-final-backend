@@ -1,4 +1,4 @@
-import { productosRepository } from "../repositories/productosRepository.js"
+import { productosRepository } from "../../repositories/productosRepository.js"
 
 export async function rolDelete (req,res,next) {
     try {

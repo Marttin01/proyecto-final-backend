@@ -1,0 +1,29 @@
+components:
+  schemas:
+    Carrito:
+      type: object
+      properties:
+        idCarrito:
+          type: string
+          description: Identificador único del carrito
+        productos:
+          type: array
+          items:
+            type: object
+            properties:
+              idProduct:
+                type: string
+                description: ID del producto en el carrito
+              cantidad:
+                type: number
+                description: Cantidad del producto en el carrito
+          description: Lista de productos en el carrito
+      required:
+        - idCarrito
+      example:
+        idCarrito: "abc123"
+        productos:
+          - idProduct: "producto1"
+            cantidad: 2
+          - idProduct: "producto2"
+            cantidad: 1

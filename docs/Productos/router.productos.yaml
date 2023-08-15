@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "API de Productos"
+  description: "API para operaciones relacionadas con productos"
+tags:
+  - name: Productos
+    description: Endpoints relacionados con productos y sus operaciones
+paths:
+  /productos/post:
+    post:
+      summary: Crear un nuevo producto
+      tags:
+        - Productos
+      parameters:
+        - name: body
+          in: body
+          description: Datos del producto a crear
+          required: true
+          schema:
+            type: object
+            # Define las propiedades del body aquí
+      responses:
+        200:
+          description: Producto creado exitosamente
+        401:
+          description: No autorizado
+  /productos/delete:
+    delete:
+      summary: Eliminar un producto
+      tags:
+        - Productos
+      responses:
+        200:
+          description: Producto eliminado exitosamente
+        401:
+          description: No autorizado
+        403:
+          description: Acceso prohibido

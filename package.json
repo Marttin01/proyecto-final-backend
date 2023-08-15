@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "practica-integradora-3",
+  "name": "proyecto-final-ferreyra",
   "version": "1.0.0",
   "description": "",
   "main": "./src/server/server.js",
@@ -24,6 +24,8 @@
     "nodemailer": "^6.9.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   }
 }

@@ -1,0 +1,63 @@
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        _id:
+          type: object
+          properties:
+            $oid:
+              type: string
+          description: ID del usuario (formato ObjectId)
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        age:
+          type: number
+          description: Edad del usuario
+        email:
+          type: string
+          description: Correo electrónico del usuario (debe ser único)
+        password:
+          type: string
+          description: Contraseña del usuario
+        rol:
+          type: string
+          enum: [admin, user, premium]
+          default: user
+          description: Rol del usuario (puede ser 'admin', 'user' o 'premium')
+        cart:
+          type: string
+          description: ID del carrito del usuario
+        last_connection:
+          type: string
+          description: Última conexión del usuario
+        documents:
+          type: array
+          items:
+            type: string
+          description: Lista de documentos del usuario
+        id:
+          type: string
+          description: Identificador único del usuario
+      required:
+        - first_name
+        - last_name
+        - email
+        - password
+      example:
+        _id:
+          $oid: "64d58fcbb6c4ef9efda3b390"
+        first_name: "userpremium"
+        last_name: "premium"
+        age: 29
+        email: "userpremium@premium.com"
+        password: "$2b$10$WqHxwfjtNktXXp5UsTtjtejCf1f0ICgWWUdTGoqwbA2pYP6jjyHee"
+        rol: "premium"
+        cart: "b2ef014b-62d6-494c-85e7-36aede933e4e"
+        last_connection: "10/8/2023, 22:35:04"
+        documents: []
+        id: "dc200a87-69e8-476d-a79f-f838c21f7ffb"

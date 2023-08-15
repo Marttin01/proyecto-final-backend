@@ -1,0 +1,42 @@
+components:
+  schemas:
+    Producto:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del producto
+        description:
+          type: string
+          description: Descripción del producto
+        stock:
+          type: number
+          description: Cantidad en stock del producto
+        price:
+          type: number
+          description: Precio del producto
+        idProducto:
+          type: string
+          description: Identificador único del producto
+        status:
+          type: boolean
+          description: Estado del producto (activo o inactivo)
+        owner:
+          type: string
+          description: Propietario del producto
+      required:
+        - title
+        - description
+        - stock
+        - price
+        - idProducto
+        - status
+        - owner
+      example:
+        title: "Producto de ejemplo"
+        description: "Este es un producto de muestra"
+        stock: 10
+        price: 99.99
+        idProducto: "abc123"
+        status: true
+        owner: "usuario123"
