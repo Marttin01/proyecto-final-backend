@@ -10,6 +10,7 @@ export async function logoutLastConnection (req,res,next){
         }
 
         await usuarioRepository.updateOne({email:usuario.email}, nuevoUsuario)
+
         next()
     } catch (error) {
         next(error)
