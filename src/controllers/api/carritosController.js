@@ -13,11 +13,11 @@ export async function handlePost (req,res,next){
 
     await Promise.all(
     carrito.productos.map(async (producto) => {
-        console.log(producto.idProduct)
+        // console.log(producto.idProduct)
         const encontrado = await productosRepository.readById(producto.idProduct)
         // console.log(encontrado)
         if(encontrado.stock > producto.cantidad){
-            console.log('el stock del producto es mayor que el del carrito')
+            // console.log('el stock del producto es mayor que el del carrito')
             const valor = encontrado.price * producto.cantidad
             // console.log(valor)
             valores.push(valor)
@@ -40,7 +40,7 @@ export async function handlePost (req,res,next){
 
             await carritoRepository.updateOne(viejoCart,carrito)
         }else {
-            console.log('el stock del producto es menor o igual que el del carrito')
+            // console.log('el stock del producto es menor o igual que el del carrito')
             throw new Error('Producto sin suficiente stock')
         }
     })    

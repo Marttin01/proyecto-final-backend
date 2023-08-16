@@ -8,7 +8,7 @@ export async function handlePost (req,res,next){
         // console.log(producto.dto())
         const creado = await productosRepository.create(producto.dto())
 
-        console.log(creado)
+        // console.log(creado)
         res.sendStatus(201)
     } catch (error) {
         next(error)

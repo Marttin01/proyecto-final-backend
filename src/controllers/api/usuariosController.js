@@ -22,7 +22,7 @@ export async function handlePost (req,res,next) {
 
     } catch (error) {
         res.status(401)
-        console.log(error)
+        next(error)
     }
 }
 
@@ -96,7 +96,7 @@ export async function handleRestablecer (req,res,next){
         // console.log(info)
 
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }
 
@@ -142,7 +142,7 @@ export async function handleDeleteAll (req,res,next){
     const tiempoRestadoString = tiempoActual.toLocaleString()
     const [mes, dia, año] = tiempoRestadoString.split('/')
     const fechaFormateada = `${dia}/${mes}/${año}`
-    console.log(fechaFormateada)
+    // console.log(fechaFormateada)
    
     const filter = { last_connection: { $lte: fechaFormateada } }
 

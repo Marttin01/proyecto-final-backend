@@ -17,7 +17,7 @@ passport.use('local', new Strategy({ usernameField:'email' }, async (email,passw
         // console.log(usuario['password'])
         
         if(crypto.validarIgualdad(password,usuario.password) === false) {
-            console.log('no concuerdan contraseñas')
+            // console.log('no concuerdan contraseñas')
             return done(null,false, {message: 'Contraseña incorrecta'})
         }
         // console.log(usuario)
