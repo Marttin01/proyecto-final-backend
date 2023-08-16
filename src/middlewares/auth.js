@@ -1,5 +1,6 @@
 import { crypto } from "../utils/criptografia.js"
 
+
 export function extraerCredenciales (req,res,next) {
     try {
         if(!req.signedCookies['authToken']){
