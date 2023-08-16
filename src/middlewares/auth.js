@@ -4,7 +4,7 @@ export function extraerCredenciales (req,res,next) {
     try {
         if(!req.signedCookies['authToken']){
             next()
-            // console.log("no agarra la cookie")
+            // console.log("no agarra la cookie"
         }else {
             const token = req.signedCookies['authToken']
 
